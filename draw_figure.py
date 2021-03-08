@@ -110,3 +110,5 @@ def draw_box_annote(outlier_num,outlier_df_sort,new_columns,pure_total_power,pur
             plt.annotate(annotate_note, xy=(single_x_outlier, single_y_outlier),
                          xytext=(single_x_outlier + 0.3, single_y_outlier + 0.5 * (-1) ** index), xycoords='data',
                          arrowprops=dict(facecolor='red', shrink=0.05))
+
+# def draw_kde():
