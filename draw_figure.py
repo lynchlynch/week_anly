@@ -3,7 +3,6 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-from tqdm import tqdm
 import pandas as pd
 
 import gen_cololist

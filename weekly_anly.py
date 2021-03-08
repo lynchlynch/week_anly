@@ -7,8 +7,11 @@ import matplotlib.pyplot as plt
 import trans_data as td
 import draw_figure as drf
 
-raw_data_dir = '/Users/pei/pydir/week_anly/weekly_data/'
-result_dir = '/Users/pei/pydir/week_anly/result/'
+# raw_data_dir = '/Users/pei/pydir/week_anly/weekly_data/'
+raw_data_dir = 'D:/pydir/week_anly/weekly_data/'
+
+# result_dir = '/Users/pei/pydir/week_anly/result/'
+result_dir = 'D:/pydir/week_anly/result/'
 
 start_date = '2021-02-06'
 end_date = '2021-02-19'
