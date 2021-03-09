@@ -112,10 +112,19 @@ def draw_box_annote(outlier_num,outlier_df_sort,new_columns,pure_total_power,pur
                          xytext=(single_x_outlier + 0.3, single_y_outlier + 0.5 * (-1) ** index), xycoords='data',
                          arrowprops=dict(facecolor='red', shrink=0.05))
 
-# def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
-#     file_list = os.listdir(raw_data_dir)
-#     selected_colo_name = 'CTU'+ '_' + 'CU'
-#     for single_file in file_list:
-#         if single_file == selected_colo_name:
+def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
+    file_list = os.listdir(raw_data_dir)
+    selected_colo_name = 'BJS'+ '_' + 'CU' + '_power_data_max.csv'
+    utility_rate_per_site = []
+    for single_file in file_list:
+        if single_file == selected_colo_name:
+            per_colo_power_data = pd.read_csv(raw_data_dir + selected_colo_name)
+            cab_list = list(set(per_colo_power_data['Series'].tolist()))
+            cab_num = len(cab_list)
+            for single_cab in cab_list:
+                selected_per_cab_data = per_colo_power_data[per_colo_power_data['Series'] == single_cab]
+                start_index = per_colo_power_data[per_colo_power_data['key'] == start_date]
+                end_index = per_colo_power_data[per_colo_power_data['key'] == end_date]
 
-    # print(file_list)
+
+            break

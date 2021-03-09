@@ -45,5 +45,5 @@ print('Draw Boxplot......')
 drf.draw_box(trans_total_power_data_max,start_date,end_date,colo_name_list,vendor_list_str,result_dir)
 
 #单机柜功率密度图
-# print('Draw Boxplot......')
-# drf.draw_kde(raw_data_dir,city_list,vendor_list_str)
+print('Draw KDE......')
+drf.draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date)
