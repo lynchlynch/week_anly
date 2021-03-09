@@ -4,6 +4,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import pandas as pd
+import os
 
 import gen_cololist
 
@@ -111,4 +112,10 @@ def draw_box_annote(outlier_num,outlier_df_sort,new_columns,pure_total_power,pur
                          xytext=(single_x_outlier + 0.3, single_y_outlier + 0.5 * (-1) ** index), xycoords='data',
                          arrowprops=dict(facecolor='red', shrink=0.05))
 
-# def draw_kde():
+# def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
+#     file_list = os.listdir(raw_data_dir)
+#     selected_colo_name = 'CTU'+ '_' + 'CU'
+#     for single_file in file_list:
+#         if single_file == selected_colo_name:
+
+    # print(file_list)

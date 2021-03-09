@@ -19,3 +19,4 @@ def trans_total_power(city_list,vendor_list_str,total_power_data_max):
     trans_total_power_data_max.insert(0, 'date', date_list)
 
     return trans_total_power_data_max,colo_name_list
+
