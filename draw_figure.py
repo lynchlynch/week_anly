@@ -125,6 +125,7 @@ def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
                 selected_per_cab_data = per_colo_power_data[per_colo_power_data['Series'] == single_cab]
                 start_index = per_colo_power_data[per_colo_power_data['key'] == start_date]
                 end_index = per_colo_power_data[per_colo_power_data['key'] == end_date]
-
-
+                power_utility_per_cab = \
+                    list(np.array(selected_per_cab_data['Value'].tolist()[start_index:end_index])/cab_power_unit)
             break
+
