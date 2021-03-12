@@ -3,10 +3,11 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-from tqdm import tqdm
 import pandas as pd
+import os
 
 import gen_cololist
+import trans_data as td
 
 def draw_errorbar(trans_total_power_data_max,start_date,end_date,colo_name_list,vendor_list_str,result_dir):
     #首先生成colo_name_list
@@ -111,3 +112,34 @@ def draw_box_annote(outlier_num,outlier_df_sort,new_columns,pure_total_power,pur
             plt.annotate(annotate_note, xy=(single_x_outlier, single_y_outlier),
                          xytext=(single_x_outlier + 0.3, single_y_outlier + 0.5 * (-1) ** index), xycoords='data',
                          arrowprops=dict(facecolor='red', shrink=0.05))
+
+def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
+    #按不同的运营商画图
+    for single_vendor in vendor_list_str:
+        print('---------------'+single_vendor+'--------------------')
+        plt.figure()
+        plt.style.use('dark_background')
+        utility_rate_per_vendor = []
+        weigh_list = [5,15,25,35,45,55,65,75,85,95]
+        weigh_rate = [0 for index in range(len(weigh_list))]
+        for single_city in city_list:
+            selected_colo_name = single_city + '_' + single_vendor
+            if os.path.exists(raw_data_dir + selected_colo_name + '_power_data_max.csv'):
+                utility_rate_per_site = td.trans_per_cab_power(raw_data_dir,selected_colo_name,start_date,end_date)
+                #将utility_rate_per_vendor转为一维，方便处理
+                for single_data in utility_rate_per_site:
+                    utility_rate_per_vendor.append(single_data)
+            else:
+                continue
+        #计算每个利用率下的比例
+        for index in range(len(weigh_list)):
+            single_weigh = weigh_list[index]
+            # print('-----------------')
+            # print(single_weigh)
+            # print(list(np.array(utility_rate_per_vendor)*100))
+            cpr_list = list(np.array(utility_rate_per_vendor)*100 - single_weigh)
+            selected_cpr_list = [i for i in cpr_list if i > 0 and i < 10]
+            weigh_rate[index] = len(selected_cpr_list)/len(utility_rate_per_vendor) * 100
+        print(weigh_rate)
+        # print(utility_rate_per_vendor)
+        # print(list(np.array(utility_rate_per_vendor)*100))
