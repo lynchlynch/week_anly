@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 import trans_data as td
 import draw_figure as drf
 
-# raw_data_dir = '/Users/pei/pydir/week_anly/weekly_data/'
-raw_data_dir = 'D:/pydir/week_anly/weekly_data/'
+raw_data_dir = '/Users/pei/pydir/week_anly/weekly_data/'
+# raw_data_dir = 'D:/pydir/week_anly/weekly_data/'
 
-# result_dir = '/Users/pei/pydir/week_anly/result/'
-result_dir = 'D:/pydir/week_anly/result/'
+result_dir = '/Users/pei/pydir/week_anly/result/'
+# result_dir = 'D:/pydir/week_anly/result/'
 
 start_date = '2021-02-06'
 end_date = '2021-02-19'
@@ -46,4 +46,4 @@ trans_total_power_data_max.to_csv(result_dir + 'trans_total_max' + '.csv',index=
 
 #单机柜功率密度图
 print('Draw KDE......')
-drf.draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date)
+drf.draw_kde(raw_data_dir,result_dir,city_list,vendor_list_str,start_date,end_date)

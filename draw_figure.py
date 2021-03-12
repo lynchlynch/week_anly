@@ -113,14 +113,14 @@ def draw_box_annote(outlier_num,outlier_df_sort,new_columns,pure_total_power,pur
                          xytext=(single_x_outlier + 0.3, single_y_outlier + 0.5 * (-1) ** index), xycoords='data',
                          arrowprops=dict(facecolor='red', shrink=0.05))
 
-def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
+def draw_kde(raw_data_dir,result_dir,city_list,vendor_list_str,start_date,end_date):
     #按不同的运营商画图
     for single_vendor in vendor_list_str:
-        print('---------------'+single_vendor+'--------------------')
+        # print('---------------'+single_vendor+'--------------------')
         plt.figure()
         plt.style.use('dark_background')
         utility_rate_per_vendor = []
-        weigh_list = [5,15,25,35,45,55,65,75,85,95]
+        weigh_list = [10,20,30,40,50,60,70,80,90,100]
         weigh_rate = [0 for index in range(len(weigh_list))]
         for single_city in city_list:
             selected_colo_name = single_city + '_' + single_vendor
@@ -131,6 +131,7 @@ def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
                     utility_rate_per_vendor.append(single_data)
             else:
                 continue
+
         #计算每个利用率下的比例
         for index in range(len(weigh_list)):
             single_weigh = weigh_list[index]
@@ -140,6 +141,12 @@ def draw_kde(raw_data_dir,city_list,vendor_list_str,start_date,end_date):
             cpr_list = list(np.array(utility_rate_per_vendor)*100 - single_weigh)
             selected_cpr_list = [i for i in cpr_list if i > 0 and i < 10]
             weigh_rate[index] = len(selected_cpr_list)/len(utility_rate_per_vendor) * 100
-        print(weigh_rate)
+        # print(weigh_list)
+        # print(weigh_rate)
         # print(utility_rate_per_vendor)
         # print(list(np.array(utility_rate_per_vendor)*100))
+        plt.bar(weigh_list,weigh_rate,width=5)
+        plt.xlabel('Power Utility Rate(%)')
+        plt.ylabel('proportion(%)')
+        plt.xticks(weigh_list,weigh_list)
+        plt.savefig(result_dir + single_vendor + '_Power_Rate.png')
