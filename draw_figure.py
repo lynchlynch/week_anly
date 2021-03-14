@@ -89,6 +89,7 @@ def draw_box(trans_total_power_data_max,start_date,end_date,colo_name_list,vendo
         plt.savefig(result_dir + 'Total_Power_Data_Box.png')
     elif len(outlier_df_sort) >0 and len(outlier_df_sort) < 3:
         draw_box_annote(len(outlier_df_sort),outlier_df_sort,new_columns,pure_total_power,pure_total_power_slice)
+        plt.savefig(result_dir + 'Total_Power_Data_Box.png')
     else:
         draw_box_annote(outlier_num, outlier_df_sort, new_columns, pure_total_power, pure_total_power_slice)
         plt.savefig(result_dir + 'Total_Power_Data_Box.png')

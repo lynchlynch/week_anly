@@ -13,8 +13,8 @@ raw_data_dir = '/Users/pei/pydir/week_anly/weekly_data/'
 result_dir = '/Users/pei/pydir/week_anly/result/'
 # result_dir = 'D:/pydir/week_anly/result/'
 
-start_date = '2021-02-06'
-end_date = '2021-02-19'
+start_date = '2021-03-06'
+end_date = '2021-03-12'
 
 #delete non-csv file
 for single_file in os.listdir(raw_data_dir):
@@ -27,7 +27,7 @@ vendor_list = ['03','04']
 vendor_list_str = ['CU','DP']
 
 total_power_data_max = pd.read_csv(raw_data_dir + 'total_power_data_max.csv')
-total_power_data_avg = pd.read_csv(raw_data_dir + 'total_power_data_avg.csv')
+# total_power_data_avg = pd.read_csv(raw_data_dir + 'total_power_data_avg.csv')
 # print(total_power_data_max)
 
 #转换源文件格式，以便处理
